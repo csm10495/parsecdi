@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>parsecdi.parsecdi API documentation</title>
+<meta name="description" content="A parser for the output file from Crystal Disk Info" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>parsecdi.parsecdi</code></h1>
+</header>
+<section id="section-intro">
+<p>A parser for the output file from Crystal Disk Info</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+A parser for the output file from Crystal Disk Info
+&#34;&#34;&#34;
+
+from __future__ import annotations
+
+import dataclasses
+import enum
+import functools
+import pathlib
+import platform
+import shutil
+import subprocess
+
+CRYSTAL_DISK_INFO_X64_NAME = &#34;DiskInfo64.exe&#34;
+CRYSTAL_DISK_INFO_X32_NAME = &#34;DiskInfo32.exe&#34;
+
+
+def is_64bit_os() -&gt; bool:
+    &#34;&#34;&#34;
+    Returns True if the OS is 64-bit, False otherwise.
+    &#34;&#34;&#34;
+    return platform.machine().endswith(&#34;64&#34;)
+
+
+@dataclasses.dataclass(frozen=True, eq=True)
+class DiskSMARTAttribute:
+    &#34;&#34;&#34;
+    Holds data for a single SMART attribute.
+    &#34;&#34;&#34;
+
+    id: int
+    name: str
+    raw: int
+    current: int | None = None
+    worst: int | None = None
+    threshold: int | None = None
+
+
+@dataclasses.dataclass(frozen=True, eq=True)
+class DiskHealth:
+    &#34;&#34;&#34;
+    Holds health data for a disk.
+    &#34;&#34;&#34;
+
+    status: str
+    smart: tuple[DiskSMARTAttribute]
+    percent: int | None
+
+
+@dataclasses.dataclass(frozen=True, eq=True)
+class Disk:
+    &#34;&#34;&#34;
+    Holds data for a single disk.
+    &#34;&#34;&#34;
+
+    model: str | None = None
+    firmware: str | None = None
+    serial: str | None = None
+    size: str | None = None
+    health: DiskHealth | None = None
+    raw: dict[str, str] | None = None
+
+    @classmethod
+    def from_info(
+        cls, raw_disk_attrs: dict, disk_smart_attrs: list[DiskSMARTAttribute]
+    ) -&gt; Disk:
+        &#34;&#34;&#34;
+        Creates a Disk object from the raw disk info and SMART attributes.
+        &#34;&#34;&#34;
+        health_status = raw_disk_attrs.get(&#34;Health Status&#34;, &#34;Unknown&#34;)
+        health_percent = None
+        health_str = health_status.split(&#34;(&#34;)[0].strip()
+        try:
+            health_percent = int(
+                health_status.split(&#34; &#34;)[1].split(&#34;(&#34;)[1].split(&#34; &#34;)[0]
+            )
+        except IndexError:
+            pass
+
+        return cls(
+            model=raw_disk_attrs.get(&#34;Model&#34;, None),
+            firmware=raw_disk_attrs.get(&#34;Firmware&#34;, None),
+            serial=raw_disk_attrs.get(&#34;Serial Number&#34;, None),
+            size=raw_disk_attrs.get(&#34;Disk Size&#34;, None).split(&#34;(&#34;)[0].strip()
+            if raw_disk_attrs.get(&#34;Disk Size&#34;, None)
+            else None,
+            health=DiskHealth(
+                status=health_str, smart=tuple(disk_smart_attrs), percent=health_percent
+            ),
+            raw=raw_disk_attrs,
+        )
+
+    def __repr__(self):
+        &#34;&#34;&#34;
+        Returns a string representation of the Disk object.
+        &#34;&#34;&#34;
+        return f&#34;&lt;Disk - {self.model} - {self.serial} - {self.size}&gt;&#34;
+
+
+class ParseState(enum.Enum):
+    &#34;&#34;&#34;
+    Used for the parsing state machine
+    &#34;&#34;&#34;
+
+    Header = enum.auto()
+    Other = enum.auto()
+    DiskList = enum.auto()
+    DiskHeader = enum.auto()
+    DiskInfo = enum.auto()
+    DiskSmartHeader = enum.auto()
+    DiskSmartAta = enum.auto()
+    DiskSmartNvme = enum.auto()
+
+
+@dataclasses.dataclass(unsafe_hash=True)
+class CrystalDiskInfo:
+    &#34;&#34;&#34;
+    A class for parsing the output file from Crystal Disk Info
+    &#34;&#34;&#34;
+
+    exe: pathlib.Path | None = None
+
+    @functools.cache
+    def is_shim(self) -&gt; False:
+        &#34;&#34;&#34;
+        Returns True if the exe is a chocolatey shim, False otherwise.
+        &#34;&#34;&#34;
+        try:
+            return (
+                &#34;shim&#34;
+                in subprocess.check_output(
+                    [
+                        &#34;powershell&#34;,
+                        f&#39;(Get-Item &#34;{self.exe}&#34;).VersionInfo.FileDescription&#39;,
+                    ]
+                ).decode()
+            )
+        except subprocess.CalledProcessError:
+            return False
+
+    @property
+    def dump_dir(self):
+        &#34;&#34;&#34;
+        Returns the directory that the DiskInfo.txt file will be dumped to.
+        &#34;&#34;&#34;
+        if self.is_shim():
+            # chocolatey is weird.. it has a shim, but the actual exe is in a different place, so running /CopyExit leaves the output in real exe&#39;s place.
+            dump_dir = self.exe.parent.parent / &#34;lib/crystaldiskinfo.portable/tools&#34;
+        else:
+            dump_dir = self.exe.parent
+
+        if not dump_dir.is_dir():
+            raise FileNotFoundError(f&#34;Could not find dump dir for {self.exe}&#34;)
+
+        return dump_dir
+
+    @classmethod
+    def get(cls) -&gt; CrystalDiskInfo:
+        &#34;&#34;&#34;
+        Returns a filled out instance of CrystalDiskInfo with references to the installed Crystal Disk Info executable
+        &#34;&#34;&#34;
+        exe_name = (
+            CRYSTAL_DISK_INFO_X64_NAME if is_64bit_os() else CRYSTAL_DISK_INFO_X32_NAME
+        )
+        exe_full_path = None
+        if full_path := shutil.which(exe_name):
+            exe_full_path = pathlib.Path(full_path)
+        elif full_path := shutil.which(CRYSTAL_DISK_INFO_X32_NAME):
+            # if the native version isn&#39;t found, see if we can find the 32 bit version.
+            exe_full_path = pathlib.Path(full_path)
+
+        for test_dir in (
+            pathlib.Path(r&#34;C:\Program Files\CrystalDiskInfo&#34;),
+            pathlib.Path(r&#34;C:\Program Files (x86)\CrystalDiskInfo&#34;),
+        ):
+            possible_exe = test_dir / exe_name
+            if possible_exe.is_file():
+                exe_full_path = possible_exe
+                break
+
+        if exe_full_path:
+            return cls(exe_full_path)
+
+        raise ValueError(
+            &#34;Unable to make a CrystalDiskInfo object... was crystal disk info installed?&#34;
+        )
+
+    def get_raw_disk_info(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns the raw disk info string from Crystal Disk Info
+
+        Note that if we are not running as admin, the user may be prompted by UAC.
+        &#34;&#34;&#34;
+        args = [str(self.exe)]
+        if self.is_shim():
+            args.append(&#34;--shimgen-waitforexit&#34;)
+        args.append(&#34;/CopyExit&#34;)
+        subprocess.check_call(args)
+        return (self.dump_dir / &#34;DiskInfo.txt&#34;).read_text()
+
+    def get_disks(self, disk_info_file: pathlib.Path | None = None) -&gt; list[Disk]:
+        &#34;&#34;&#34;
+        Returns a list of Disk objects from the raw disk info string.
+
+        If disk_info_file is provided, it will be used instead of calling crystal disk info directly to get the raw disk info.
+        &#34;&#34;&#34;
+        ret_disks = []
+        if disk_info_file:
+            raw_disk_info_lines = disk_info_file.read_text().splitlines()
+        else:
+            raw_disk_info_lines = self.get_raw_disk_info().splitlines()
+        state = ParseState.Header
+        raw_disk_attrs = {}
+        disk_smart_attrs = []
+
+        for line in raw_disk_info_lines:
+            line = line.strip()
+            if not line:
+                continue
+
+            if line.startswith(&#34;-- Disk List &#34;):
+                state = ParseState.DiskList
+                continue
+
+            if state in (ParseState.DiskList, ParseState.Other):
+                if line.startswith(&#34;----&#34;):
+                    state = ParseState.DiskHeader
+                    continue
+
+            if state == ParseState.DiskHeader:
+                if line.startswith(&#34;----&#34;):
+                    state = ParseState.DiskInfo
+
+                    if raw_disk_attrs:
+                        ret_disks.append(
+                            Disk.from_info(raw_disk_attrs, disk_smart_attrs)
+                        )
+
+                    raw_disk_attrs = {}
+                    disk_smart_attrs = []
+                    continue
+
+            if state == ParseState.DiskInfo:
+                if line.startswith(&#34;-- S.M.A.R.T.&#34;):
+                    state = ParseState.DiskSmartHeader
+                    continue
+
+                key, value = [a.strip() for a in line.split(&#34;:&#34;, 1)]
+                raw_disk_attrs[key] = value
+
+            if state == ParseState.DiskSmartHeader:
+                if &#34;Cur&#34; in line:
+                    state = ParseState.DiskSmartAta
+                    continue
+                else:
+                    state = ParseState.DiskSmartNvme
+                    continue
+
+            if state in (ParseState.DiskSmartAta, ParseState.DiskSmartNvme):
+                line = line.replace(&#34;_&#34;, &#34;&#34;)
+                if line.startswith(&#34;--&#34;):
+                    state = ParseState.Other
+                    continue
+
+            if state == ParseState.DiskSmartAta:
+                if line[0].lower() in &#34;0123456789abcdef&#34;:
+                    attr_id, cur, wor, thr, attr_raw, attr_name = [
+                        a.strip() for a in line.split(None, 5)
+                    ]
+                    disk_smart_attrs.append(
+                        DiskSMARTAttribute(
+                            int(attr_id, 16),
+                            attr_name,
+                            int(attr_raw, 16),
+                            int(cur),
+                            worst=int(wor),
+                            threshold=int(thr),
+                        )
+                    )
+            if state == ParseState.DiskSmartNvme:
+                if line[0].lower() in &#34;0123456789abcdef&#34;:
+                    attr_id, attr_raw, attr_name = [
+                        a.strip() for a in line.split(None, 2)
+                    ]
+                    disk_smart_attrs.append(
+                        DiskSMARTAttribute(
+                            int(attr_id, 16), attr_name, int(attr_raw, 16)
+                        )
+                    )
+
+        if raw_disk_attrs:
+            ret_disks.append(Disk.from_info(raw_disk_attrs, disk_smart_attrs))
+
+        return ret_disks</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="parsecdi.parsecdi.is_64bit_os"><code class="name flex">
+<span>def <span class="ident">is_64bit_os</span></span>(<span>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if the OS is 64-bit, False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_64bit_os() -&gt; bool:
+    &#34;&#34;&#34;
+    Returns True if the OS is 64-bit, False otherwise.
+    &#34;&#34;&#34;
+    return platform.machine().endswith(&#34;64&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo"><code class="flex name class">
+<span>class <span class="ident">CrystalDiskInfo</span></span>
+<span>(</span><span>exe: pathlib.Path | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class for parsing the output file from Crystal Disk Info</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclasses.dataclass(unsafe_hash=True)
+class CrystalDiskInfo:
+    &#34;&#34;&#34;
+    A class for parsing the output file from Crystal Disk Info
+    &#34;&#34;&#34;
+
+    exe: pathlib.Path | None = None
+
+    @functools.cache
+    def is_shim(self) -&gt; False:
+        &#34;&#34;&#34;
+        Returns True if the exe is a chocolatey shim, False otherwise.
+        &#34;&#34;&#34;
+        try:
+            return (
+                &#34;shim&#34;
+                in subprocess.check_output(
+                    [
+                        &#34;powershell&#34;,
+                        f&#39;(Get-Item &#34;{self.exe}&#34;).VersionInfo.FileDescription&#39;,
+                    ]
+                ).decode()
+            )
+        except subprocess.CalledProcessError:
+            return False
+
+    @property
+    def dump_dir(self):
+        &#34;&#34;&#34;
+        Returns the directory that the DiskInfo.txt file will be dumped to.
+        &#34;&#34;&#34;
+        if self.is_shim():
+            # chocolatey is weird.. it has a shim, but the actual exe is in a different place, so running /CopyExit leaves the output in real exe&#39;s place.
+            dump_dir = self.exe.parent.parent / &#34;lib/crystaldiskinfo.portable/tools&#34;
+        else:
+            dump_dir = self.exe.parent
+
+        if not dump_dir.is_dir():
+            raise FileNotFoundError(f&#34;Could not find dump dir for {self.exe}&#34;)
+
+        return dump_dir
+
+    @classmethod
+    def get(cls) -&gt; CrystalDiskInfo:
+        &#34;&#34;&#34;
+        Returns a filled out instance of CrystalDiskInfo with references to the installed Crystal Disk Info executable
+        &#34;&#34;&#34;
+        exe_name = (
+            CRYSTAL_DISK_INFO_X64_NAME if is_64bit_os() else CRYSTAL_DISK_INFO_X32_NAME
+        )
+        exe_full_path = None
+        if full_path := shutil.which(exe_name):
+            exe_full_path = pathlib.Path(full_path)
+        elif full_path := shutil.which(CRYSTAL_DISK_INFO_X32_NAME):
+            # if the native version isn&#39;t found, see if we can find the 32 bit version.
+            exe_full_path = pathlib.Path(full_path)
+
+        for test_dir in (
+            pathlib.Path(r&#34;C:\Program Files\CrystalDiskInfo&#34;),
+            pathlib.Path(r&#34;C:\Program Files (x86)\CrystalDiskInfo&#34;),
+        ):
+            possible_exe = test_dir / exe_name
+            if possible_exe.is_file():
+                exe_full_path = possible_exe
+                break
+
+        if exe_full_path:
+            return cls(exe_full_path)
+
+        raise ValueError(
+            &#34;Unable to make a CrystalDiskInfo object... was crystal disk info installed?&#34;
+        )
+
+    def get_raw_disk_info(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns the raw disk info string from Crystal Disk Info
+
+        Note that if we are not running as admin, the user may be prompted by UAC.
+        &#34;&#34;&#34;
+        args = [str(self.exe)]
+        if self.is_shim():
+            args.append(&#34;--shimgen-waitforexit&#34;)
+        args.append(&#34;/CopyExit&#34;)
+        subprocess.check_call(args)
+        return (self.dump_dir / &#34;DiskInfo.txt&#34;).read_text()
+
+    def get_disks(self, disk_info_file: pathlib.Path | None = None) -&gt; list[Disk]:
+        &#34;&#34;&#34;
+        Returns a list of Disk objects from the raw disk info string.
+
+        If disk_info_file is provided, it will be used instead of calling crystal disk info directly to get the raw disk info.
+        &#34;&#34;&#34;
+        ret_disks = []
+        if disk_info_file:
+            raw_disk_info_lines = disk_info_file.read_text().splitlines()
+        else:
+            raw_disk_info_lines = self.get_raw_disk_info().splitlines()
+        state = ParseState.Header
+        raw_disk_attrs = {}
+        disk_smart_attrs = []
+
+        for line in raw_disk_info_lines:
+            line = line.strip()
+            if not line:
+                continue
+
+            if line.startswith(&#34;-- Disk List &#34;):
+                state = ParseState.DiskList
+                continue
+
+            if state in (ParseState.DiskList, ParseState.Other):
+                if line.startswith(&#34;----&#34;):
+                    state = ParseState.DiskHeader
+                    continue
+
+            if state == ParseState.DiskHeader:
+                if line.startswith(&#34;----&#34;):
+                    state = ParseState.DiskInfo
+
+                    if raw_disk_attrs:
+                        ret_disks.append(
+                            Disk.from_info(raw_disk_attrs, disk_smart_attrs)
+                        )
+
+                    raw_disk_attrs = {}
+                    disk_smart_attrs = []
+                    continue
+
+            if state == ParseState.DiskInfo:
+                if line.startswith(&#34;-- S.M.A.R.T.&#34;):
+                    state = ParseState.DiskSmartHeader
+                    continue
+
+                key, value = [a.strip() for a in line.split(&#34;:&#34;, 1)]
+                raw_disk_attrs[key] = value
+
+            if state == ParseState.DiskSmartHeader:
+                if &#34;Cur&#34; in line:
+                    state = ParseState.DiskSmartAta
+                    continue
+                else:
+                    state = ParseState.DiskSmartNvme
+                    continue
+
+            if state in (ParseState.DiskSmartAta, ParseState.DiskSmartNvme):
+                line = line.replace(&#34;_&#34;, &#34;&#34;)
+                if line.startswith(&#34;--&#34;):
+                    state = ParseState.Other
+                    continue
+
+            if state == ParseState.DiskSmartAta:
+                if line[0].lower() in &#34;0123456789abcdef&#34;:
+                    attr_id, cur, wor, thr, attr_raw, attr_name = [
+                        a.strip() for a in line.split(None, 5)
+                    ]
+                    disk_smart_attrs.append(
+                        DiskSMARTAttribute(
+                            int(attr_id, 16),
+                            attr_name,
+                            int(attr_raw, 16),
+                            int(cur),
+                            worst=int(wor),
+                            threshold=int(thr),
+                        )
+                    )
+            if state == ParseState.DiskSmartNvme:
+                if line[0].lower() in &#34;0123456789abcdef&#34;:
+                    attr_id, attr_raw, attr_name = [
+                        a.strip() for a in line.split(None, 2)
+                    ]
+                    disk_smart_attrs.append(
+                        DiskSMARTAttribute(
+                            int(attr_id, 16), attr_name, int(attr_raw, 16)
+                        )
+                    )
+
+        if raw_disk_attrs:
+            ret_disks.append(Disk.from_info(raw_disk_attrs, disk_smart_attrs))
+
+        return ret_disks</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo.exe"><code class="name">var <span class="ident">exe</span> : pathlib.Path | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>) ‑> <a title="parsecdi.parsecdi.CrystalDiskInfo" href="#parsecdi.parsecdi.CrystalDiskInfo">CrystalDiskInfo</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a filled out instance of CrystalDiskInfo with references to the installed Crystal Disk Info executable</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def get(cls) -&gt; CrystalDiskInfo:
+    &#34;&#34;&#34;
+    Returns a filled out instance of CrystalDiskInfo with references to the installed Crystal Disk Info executable
+    &#34;&#34;&#34;
+    exe_name = (
+        CRYSTAL_DISK_INFO_X64_NAME if is_64bit_os() else CRYSTAL_DISK_INFO_X32_NAME
+    )
+    exe_full_path = None
+    if full_path := shutil.which(exe_name):
+        exe_full_path = pathlib.Path(full_path)
+    elif full_path := shutil.which(CRYSTAL_DISK_INFO_X32_NAME):
+        # if the native version isn&#39;t found, see if we can find the 32 bit version.
+        exe_full_path = pathlib.Path(full_path)
+
+    for test_dir in (
+        pathlib.Path(r&#34;C:\Program Files\CrystalDiskInfo&#34;),
+        pathlib.Path(r&#34;C:\Program Files (x86)\CrystalDiskInfo&#34;),
+    ):
+        possible_exe = test_dir / exe_name
+        if possible_exe.is_file():
+            exe_full_path = possible_exe
+            break
+
+    if exe_full_path:
+        return cls(exe_full_path)
+
+    raise ValueError(
+        &#34;Unable to make a CrystalDiskInfo object... was crystal disk info installed?&#34;
+    )</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo.dump_dir"><code class="name">var <span class="ident">dump_dir</span></code></dt>
+<dd>
+<div class="desc"><p>Returns the directory that the DiskInfo.txt file will be dumped to.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def dump_dir(self):
+    &#34;&#34;&#34;
+    Returns the directory that the DiskInfo.txt file will be dumped to.
+    &#34;&#34;&#34;
+    if self.is_shim():
+        # chocolatey is weird.. it has a shim, but the actual exe is in a different place, so running /CopyExit leaves the output in real exe&#39;s place.
+        dump_dir = self.exe.parent.parent / &#34;lib/crystaldiskinfo.portable/tools&#34;
+    else:
+        dump_dir = self.exe.parent
+
+    if not dump_dir.is_dir():
+        raise FileNotFoundError(f&#34;Could not find dump dir for {self.exe}&#34;)
+
+    return dump_dir</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo.get_disks"><code class="name flex">
+<span>def <span class="ident">get_disks</span></span>(<span>self, disk_info_file: pathlib.Path | None = None) ‑> list[<a title="parsecdi.parsecdi.Disk" href="#parsecdi.parsecdi.Disk">Disk</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of Disk objects from the raw disk info string.</p>
+<p>If disk_info_file is provided, it will be used instead of calling crystal disk info directly to get the raw disk info.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_disks(self, disk_info_file: pathlib.Path | None = None) -&gt; list[Disk]:
+    &#34;&#34;&#34;
+    Returns a list of Disk objects from the raw disk info string.
+
+    If disk_info_file is provided, it will be used instead of calling crystal disk info directly to get the raw disk info.
+    &#34;&#34;&#34;
+    ret_disks = []
+    if disk_info_file:
+        raw_disk_info_lines = disk_info_file.read_text().splitlines()
+    else:
+        raw_disk_info_lines = self.get_raw_disk_info().splitlines()
+    state = ParseState.Header
+    raw_disk_attrs = {}
+    disk_smart_attrs = []
+
+    for line in raw_disk_info_lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        if line.startswith(&#34;-- Disk List &#34;):
+            state = ParseState.DiskList
+            continue
+
+        if state in (ParseState.DiskList, ParseState.Other):
+            if line.startswith(&#34;----&#34;):
+                state = ParseState.DiskHeader
+                continue
+
+        if state == ParseState.DiskHeader:
+            if line.startswith(&#34;----&#34;):
+                state = ParseState.DiskInfo
+
+                if raw_disk_attrs:
+                    ret_disks.append(
+                        Disk.from_info(raw_disk_attrs, disk_smart_attrs)
+                    )
+
+                raw_disk_attrs = {}
+                disk_smart_attrs = []
+                continue
+
+        if state == ParseState.DiskInfo:
+            if line.startswith(&#34;-- S.M.A.R.T.&#34;):
+                state = ParseState.DiskSmartHeader
+                continue
+
+            key, value = [a.strip() for a in line.split(&#34;:&#34;, 1)]
+            raw_disk_attrs[key] = value
+
+        if state == ParseState.DiskSmartHeader:
+            if &#34;Cur&#34; in line:
+                state = ParseState.DiskSmartAta
+                continue
+            else:
+                state = ParseState.DiskSmartNvme
+                continue
+
+        if state in (ParseState.DiskSmartAta, ParseState.DiskSmartNvme):
+            line = line.replace(&#34;_&#34;, &#34;&#34;)
+            if line.startswith(&#34;--&#34;):
+                state = ParseState.Other
+                continue
+
+        if state == ParseState.DiskSmartAta:
+            if line[0].lower() in &#34;0123456789abcdef&#34;:
+                attr_id, cur, wor, thr, attr_raw, attr_name = [
+                    a.strip() for a in line.split(None, 5)
+                ]
+                disk_smart_attrs.append(
+                    DiskSMARTAttribute(
+                        int(attr_id, 16),
+                        attr_name,
+                        int(attr_raw, 16),
+                        int(cur),
+                        worst=int(wor),
+                        threshold=int(thr),
+                    )
+                )
+        if state == ParseState.DiskSmartNvme:
+            if line[0].lower() in &#34;0123456789abcdef&#34;:
+                attr_id, attr_raw, attr_name = [
+                    a.strip() for a in line.split(None, 2)
+                ]
+                disk_smart_attrs.append(
+                    DiskSMARTAttribute(
+                        int(attr_id, 16), attr_name, int(attr_raw, 16)
+                    )
+                )
+
+    if raw_disk_attrs:
+        ret_disks.append(Disk.from_info(raw_disk_attrs, disk_smart_attrs))
+
+    return ret_disks</code></pre>
+</details>
+</dd>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo.get_raw_disk_info"><code class="name flex">
+<span>def <span class="ident">get_raw_disk_info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the raw disk info string from Crystal Disk Info</p>
+<p>Note that if we are not running as admin, the user may be prompted by UAC.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_raw_disk_info(self) -&gt; str:
+    &#34;&#34;&#34;
+    Returns the raw disk info string from Crystal Disk Info
+
+    Note that if we are not running as admin, the user may be prompted by UAC.
+    &#34;&#34;&#34;
+    args = [str(self.exe)]
+    if self.is_shim():
+        args.append(&#34;--shimgen-waitforexit&#34;)
+    args.append(&#34;/CopyExit&#34;)
+    subprocess.check_call(args)
+    return (self.dump_dir / &#34;DiskInfo.txt&#34;).read_text()</code></pre>
+</details>
+</dd>
+<dt id="parsecdi.parsecdi.CrystalDiskInfo.is_shim"><code class="name flex">
+<span>def <span class="ident">is_shim</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if the exe is a chocolatey shim, False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@functools.cache
+def is_shim(self) -&gt; False:
+    &#34;&#34;&#34;
+    Returns True if the exe is a chocolatey shim, False otherwise.
+    &#34;&#34;&#34;
+    try:
+        return (
+            &#34;shim&#34;
+            in subprocess.check_output(
+                [
+                    &#34;powershell&#34;,
+                    f&#39;(Get-Item &#34;{self.exe}&#34;).VersionInfo.FileDescription&#39;,
+                ]
+            ).decode()
+        )
+    except subprocess.CalledProcessError:
+        return False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="parsecdi.parsecdi.Disk"><code class="flex name class">
+<span>class <span class="ident">Disk</span></span>
+<span>(</span><span>model: str | None = None, firmware: str | None = None, serial: str | None = None, size: str | None = None, health: <a title="parsecdi.parsecdi.DiskHealth" href="#parsecdi.parsecdi.DiskHealth">DiskHealth</a> | None = None, raw: dict[str, str] | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Holds data for a single disk.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclasses.dataclass(frozen=True, eq=True)
+class Disk:
+    &#34;&#34;&#34;
+    Holds data for a single disk.
+    &#34;&#34;&#34;
+
+    model: str | None = None
+    firmware: str | None = None
+    serial: str | None = None
+    size: str | None = None
+    health: DiskHealth | None = None
+    raw: dict[str, str] | None = None
+
+    @classmethod
+    def from_info(
+        cls, raw_disk_attrs: dict, disk_smart_attrs: list[DiskSMARTAttribute]
+    ) -&gt; Disk:
+        &#34;&#34;&#34;
+        Creates a Disk object from the raw disk info and SMART attributes.
+        &#34;&#34;&#34;
+        health_status = raw_disk_attrs.get(&#34;Health Status&#34;, &#34;Unknown&#34;)
+        health_percent = None
+        health_str = health_status.split(&#34;(&#34;)[0].strip()
+        try:
+            health_percent = int(
+                health_status.split(&#34; &#34;)[1].split(&#34;(&#34;)[1].split(&#34; &#34;)[0]
+            )
+        except IndexError:
+            pass
+
+        return cls(
+            model=raw_disk_attrs.get(&#34;Model&#34;, None),
+            firmware=raw_disk_attrs.get(&#34;Firmware&#34;, None),
+            serial=raw_disk_attrs.get(&#34;Serial Number&#34;, None),
+            size=raw_disk_attrs.get(&#34;Disk Size&#34;, None).split(&#34;(&#34;)[0].strip()
+            if raw_disk_attrs.get(&#34;Disk Size&#34;, None)
+            else None,
+            health=DiskHealth(
+                status=health_str, smart=tuple(disk_smart_attrs), percent=health_percent
+            ),
+            raw=raw_disk_attrs,
+        )
+
+    def __repr__(self):
+        &#34;&#34;&#34;
+        Returns a string representation of the Disk object.
+        &#34;&#34;&#34;
+        return f&#34;&lt;Disk - {self.model} - {self.serial} - {self.size}&gt;&#34;</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="parsecdi.parsecdi.Disk.firmware"><code class="name">var <span class="ident">firmware</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.Disk.health"><code class="name">var <span class="ident">health</span> : <a title="parsecdi.parsecdi.DiskHealth" href="#parsecdi.parsecdi.DiskHealth">DiskHealth</a> | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.Disk.model"><code class="name">var <span class="ident">model</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.Disk.raw"><code class="name">var <span class="ident">raw</span> : dict[str, str] | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.Disk.serial"><code class="name">var <span class="ident">serial</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.Disk.size"><code class="name">var <span class="ident">size</span> : str | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="parsecdi.parsecdi.Disk.from_info"><code class="name flex">
+<span>def <span class="ident">from_info</span></span>(<span>raw_disk_attrs: dict, disk_smart_attrs: list[<a title="parsecdi.parsecdi.DiskSMARTAttribute" href="#parsecdi.parsecdi.DiskSMARTAttribute">DiskSMARTAttribute</a>]) ‑> <a title="parsecdi.parsecdi.Disk" href="#parsecdi.parsecdi.Disk">Disk</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a Disk object from the raw disk info and SMART attributes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_info(
+    cls, raw_disk_attrs: dict, disk_smart_attrs: list[DiskSMARTAttribute]
+) -&gt; Disk:
+    &#34;&#34;&#34;
+    Creates a Disk object from the raw disk info and SMART attributes.
+    &#34;&#34;&#34;
+    health_status = raw_disk_attrs.get(&#34;Health Status&#34;, &#34;Unknown&#34;)
+    health_percent = None
+    health_str = health_status.split(&#34;(&#34;)[0].strip()
+    try:
+        health_percent = int(
+            health_status.split(&#34; &#34;)[1].split(&#34;(&#34;)[1].split(&#34; &#34;)[0]
+        )
+    except IndexError:
+        pass
+
+    return cls(
+        model=raw_disk_attrs.get(&#34;Model&#34;, None),
+        firmware=raw_disk_attrs.get(&#34;Firmware&#34;, None),
+        serial=raw_disk_attrs.get(&#34;Serial Number&#34;, None),
+        size=raw_disk_attrs.get(&#34;Disk Size&#34;, None).split(&#34;(&#34;)[0].strip()
+        if raw_disk_attrs.get(&#34;Disk Size&#34;, None)
+        else None,
+        health=DiskHealth(
+            status=health_str, smart=tuple(disk_smart_attrs), percent=health_percent
+        ),
+        raw=raw_disk_attrs,
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="parsecdi.parsecdi.DiskHealth"><code class="flex name class">
+<span>class <span class="ident">DiskHealth</span></span>
+<span>(</span><span>status: str, smart: tuple[<a title="parsecdi.parsecdi.DiskSMARTAttribute" href="#parsecdi.parsecdi.DiskSMARTAttribute">DiskSMARTAttribute</a>], percent: int | None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Holds health data for a disk.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclasses.dataclass(frozen=True, eq=True)
+class DiskHealth:
+    &#34;&#34;&#34;
+    Holds health data for a disk.
+    &#34;&#34;&#34;
+
+    status: str
+    smart: tuple[DiskSMARTAttribute]
+    percent: int | None</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="parsecdi.parsecdi.DiskHealth.percent"><code class="name">var <span class="ident">percent</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskHealth.smart"><code class="name">var <span class="ident">smart</span> : tuple[<a title="parsecdi.parsecdi.DiskSMARTAttribute" href="#parsecdi.parsecdi.DiskSMARTAttribute">DiskSMARTAttribute</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskHealth.status"><code class="name">var <span class="ident">status</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute"><code class="flex name class">
+<span>class <span class="ident">DiskSMARTAttribute</span></span>
+<span>(</span><span>id: int, name: str, raw: int, current: int | None = None, worst: int | None = None, threshold: int | None = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Holds data for a single SMART attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclasses.dataclass(frozen=True, eq=True)
+class DiskSMARTAttribute:
+    &#34;&#34;&#34;
+    Holds data for a single SMART attribute.
+    &#34;&#34;&#34;
+
+    id: int
+    name: str
+    raw: int
+    current: int | None = None
+    worst: int | None = None
+    threshold: int | None = None</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute.current"><code class="name">var <span class="ident">current</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute.id"><code class="name">var <span class="ident">id</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute.raw"><code class="name">var <span class="ident">raw</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute.threshold"><code class="name">var <span class="ident">threshold</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.DiskSMARTAttribute.worst"><code class="name">var <span class="ident">worst</span> : int | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState"><code class="flex name class">
+<span>class <span class="ident">ParseState</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Used for the parsing state machine</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParseState(enum.Enum):
+    &#34;&#34;&#34;
+    Used for the parsing state machine
+    &#34;&#34;&#34;
+
+    Header = enum.auto()
+    Other = enum.auto()
+    DiskList = enum.auto()
+    DiskHeader = enum.auto()
+    DiskInfo = enum.auto()
+    DiskSmartHeader = enum.auto()
+    DiskSmartAta = enum.auto()
+    DiskSmartNvme = enum.auto()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="parsecdi.parsecdi.ParseState.DiskHeader"><code class="name">var <span class="ident">DiskHeader</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.DiskInfo"><code class="name">var <span class="ident">DiskInfo</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.DiskList"><code class="name">var <span class="ident">DiskList</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.DiskSmartAta"><code class="name">var <span class="ident">DiskSmartAta</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.DiskSmartHeader"><code class="name">var <span class="ident">DiskSmartHeader</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.DiskSmartNvme"><code class="name">var <span class="ident">DiskSmartNvme</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.Header"><code class="name">var <span class="ident">Header</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="parsecdi.parsecdi.ParseState.Other"><code class="name">var <span class="ident">Other</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="parsecdi" href="index.html">parsecdi</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="parsecdi.parsecdi.is_64bit_os" href="#parsecdi.parsecdi.is_64bit_os">is_64bit_os</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="parsecdi.parsecdi.CrystalDiskInfo" href="#parsecdi.parsecdi.CrystalDiskInfo">CrystalDiskInfo</a></code></h4>
+<ul class="two-column">
+<li><code><a title="parsecdi.parsecdi.CrystalDiskInfo.dump_dir" href="#parsecdi.parsecdi.CrystalDiskInfo.dump_dir">dump_dir</a></code></li>
+<li><code><a title="parsecdi.parsecdi.CrystalDiskInfo.exe" href="#parsecdi.parsecdi.CrystalDiskInfo.exe">exe</a></code></li>
+<li><code><a title="parsecdi.parsecdi.CrystalDiskInfo.get" href="#parsecdi.parsecdi.CrystalDiskInfo.get">get</a></code></li>
+<li><code><a title="parsecdi.parsecdi.CrystalDiskInfo.get_disks" href="#parsecdi.parsecdi.CrystalDiskInfo.get_disks">get_disks</a></code></li>
+<li><code><a title="parsecdi.parsecdi.CrystalDiskInfo.get_raw_disk_info" href="#parsecdi.parsecdi.CrystalDiskInfo.get_raw_disk_info">get_raw_disk_info</a></code></li>
+<li><code><a title="parsecdi.parsecdi.CrystalDiskInfo.is_shim" href="#parsecdi.parsecdi.CrystalDiskInfo.is_shim">is_shim</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="parsecdi.parsecdi.Disk" href="#parsecdi.parsecdi.Disk">Disk</a></code></h4>
+<ul class="two-column">
+<li><code><a title="parsecdi.parsecdi.Disk.firmware" href="#parsecdi.parsecdi.Disk.firmware">firmware</a></code></li>
+<li><code><a title="parsecdi.parsecdi.Disk.from_info" href="#parsecdi.parsecdi.Disk.from_info">from_info</a></code></li>
+<li><code><a title="parsecdi.parsecdi.Disk.health" href="#parsecdi.parsecdi.Disk.health">health</a></code></li>
+<li><code><a title="parsecdi.parsecdi.Disk.model" href="#parsecdi.parsecdi.Disk.model">model</a></code></li>
+<li><code><a title="parsecdi.parsecdi.Disk.raw" href="#parsecdi.parsecdi.Disk.raw">raw</a></code></li>
+<li><code><a title="parsecdi.parsecdi.Disk.serial" href="#parsecdi.parsecdi.Disk.serial">serial</a></code></li>
+<li><code><a title="parsecdi.parsecdi.Disk.size" href="#parsecdi.parsecdi.Disk.size">size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="parsecdi.parsecdi.DiskHealth" href="#parsecdi.parsecdi.DiskHealth">DiskHealth</a></code></h4>
+<ul class="">
+<li><code><a title="parsecdi.parsecdi.DiskHealth.percent" href="#parsecdi.parsecdi.DiskHealth.percent">percent</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskHealth.smart" href="#parsecdi.parsecdi.DiskHealth.smart">smart</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskHealth.status" href="#parsecdi.parsecdi.DiskHealth.status">status</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="parsecdi.parsecdi.DiskSMARTAttribute" href="#parsecdi.parsecdi.DiskSMARTAttribute">DiskSMARTAttribute</a></code></h4>
+<ul class="two-column">
+<li><code><a title="parsecdi.parsecdi.DiskSMARTAttribute.current" href="#parsecdi.parsecdi.DiskSMARTAttribute.current">current</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskSMARTAttribute.id" href="#parsecdi.parsecdi.DiskSMARTAttribute.id">id</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskSMARTAttribute.name" href="#parsecdi.parsecdi.DiskSMARTAttribute.name">name</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskSMARTAttribute.raw" href="#parsecdi.parsecdi.DiskSMARTAttribute.raw">raw</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskSMARTAttribute.threshold" href="#parsecdi.parsecdi.DiskSMARTAttribute.threshold">threshold</a></code></li>
+<li><code><a title="parsecdi.parsecdi.DiskSMARTAttribute.worst" href="#parsecdi.parsecdi.DiskSMARTAttribute.worst">worst</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="parsecdi.parsecdi.ParseState" href="#parsecdi.parsecdi.ParseState">ParseState</a></code></h4>
+<ul class="two-column">
+<li><code><a title="parsecdi.parsecdi.ParseState.DiskHeader" href="#parsecdi.parsecdi.ParseState.DiskHeader">DiskHeader</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.DiskInfo" href="#parsecdi.parsecdi.ParseState.DiskInfo">DiskInfo</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.DiskList" href="#parsecdi.parsecdi.ParseState.DiskList">DiskList</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.DiskSmartAta" href="#parsecdi.parsecdi.ParseState.DiskSmartAta">DiskSmartAta</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.DiskSmartHeader" href="#parsecdi.parsecdi.ParseState.DiskSmartHeader">DiskSmartHeader</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.DiskSmartNvme" href="#parsecdi.parsecdi.ParseState.DiskSmartNvme">DiskSmartNvme</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.Header" href="#parsecdi.parsecdi.ParseState.Header">Header</a></code></li>
+<li><code><a title="parsecdi.parsecdi.ParseState.Other" href="#parsecdi.parsecdi.ParseState.Other">Other</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
