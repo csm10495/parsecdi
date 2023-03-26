@@ -1,0 +1,32 @@
+name: Run tests and release
+
+on: push
+
+jobs:
+  test:
+    uses: csm10495/actions/.github/workflows/pytest.yml@master
+    with:
+      python-versions: '["3.9", "3.10", "3.11"]'
+      operation-systems: "['windows-latest']"
+  pdoc3:
+    needs: test
+    if: github.event_name != 'pull_request'
+    uses: csm10495/actions/.github/workflows/pdoc3.yml@master
+    with:
+      python-version: '3.11'
+      operating-system: 'windows-latest'
+  version-bump:
+    needs: pdoc3
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    uses: csm10495/actions/.github/workflows/version-bump.yml@master
+  github-release:
+    needs: version-bump
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    uses: csm10495/actions/.github/workflows/github-release.yml@master
+  pypi-upload:
+    needs: github-release
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    uses: csm10495/actions/.github/workflows/pypi-upload.yml@master
+    with:
+      python-version: '3.11'
+    secrets: inherit
